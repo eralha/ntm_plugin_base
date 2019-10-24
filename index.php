@@ -17,25 +17,12 @@ $er_base_plugin = new ER\app\main();
 
 //Actions and Filters
 if (isset($er_base_plugin)) {
-	//VARS
-		$plugindir = plugins_url('',__FILE__);
-
 	//Actions
 		register_activation_hook(__FILE__, array($er_base_plugin, 'activationHandler'));
 		register_deactivation_hook(__FILE__, array($er_base_plugin, 'deactivationHandler'));
 		add_action('init', array($er_base_plugin, 'init'));
 
 		add_action('admin_menu', 'er_base_plugin_init');
-
-		//Hoocking ajax functions by a array config
-		//include "php__comps/ajax__calls.php";
-
-		//$ajaxInterface = new ajax__component();
-
-		//Setting hoocks equal to ajax__component hoocks in order to generate the required nonces
-		//$er_base_plugin->ajaxHoocks = $ajaxInterface->ajaxHoocks;
-		//$er_base_plugin->configAjaxHoocks($ajaxInterface, $ajaxInterface->ajaxHoocks);
-
 
 	//Filters
 		add_action('wp_head', array($er_base_plugin, 'addHeaderContent' ));

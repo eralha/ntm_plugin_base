@@ -1,4 +1,4 @@
-var directives = angular.module('appDirectives');
+var directives = angular.module('appDirectives', []);
 
 	directives.directive('dirOpenPanel', ['$rootScope', '$injector', '$filter', '$sce', function($rootScope, $injector, $filter, $sce) {
 		return {

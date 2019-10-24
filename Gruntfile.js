@@ -25,8 +25,9 @@ module.exports = function(grunt) {
         build: {
           files: {
             "js/dist/backend.js" : [
+              'js/src/modules/angular/backend/services.js',
               'js/src/modules/angular/backend/app/*.js',
-              'js/src/modules/angular/backend/*.js'
+              'js/src/modules/angular/backend/main.js'
             ]//end files
           }
         }

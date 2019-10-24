@@ -3,16 +3,14 @@
 namespace ER\app;
 
 require_once('helpers/ajax.php');
-require_once('helpers/pluginPaths.php');
+require_once('helpers/pluginConfig.php');
 require_once('models/main.php');
 require_once('controllers/candidaturas.php');
 
     class main {
     
-            var $optionsName = "er_fc_";
-            var $dbVersion = "0.3";
             var $AJAX;
-            var $paths;
+            var $config;
             public $DB;
 
             function __construct(){
@@ -21,9 +19,7 @@ require_once('controllers/candidaturas.php');
 
             function init(){
                 //init path helper
-                $this->paths = new \ER\app\helpers\pluginPaths();
-
-                print_r($paths);
+                $this->config = new \ER\app\helpers\pluginConfig();
 
                 //init ajax helper
                 $this->AJAX = new \ER\app\helpers\ajax();
@@ -67,16 +63,14 @@ require_once('controllers/candidaturas.php');
     
                     $responseHTML .= '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">';
     
-                    $responseHTML .= "<link rel='stylesheet' href='".$this->paths->pluginRoot."/css/style.css' type='text/css' />";
-                    $responseHTML .= "<link rel='stylesheet/less' href='".$this->paths->pluginRoot."/css/less/style.less' type='text/css'>";
-                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/libs/less-1.3.3.min.js'></script>";
+                    $responseHTML .= "<link rel='stylesheet' href='".$this->config->pluginRoot."/css/style.css' type='text/css' />";
     
-                    $responseHTML .= "<script>window.pluginsDir = '".$this->paths->pluginRoot."';</script>";
+                    $responseHTML .= "<script>window.pluginsDir = '".$this->config->pluginRoot."';</script>";
                     $responseHTML .= "<script>window.currentUserId = '".$current_user->data->ID."';</script>";
                     $responseHTML .= "<script>window.nonces = ".$this->AJAX->generateNonces().";</script>";
     
-                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/libs/angular.min.js'></script>";
-                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/dist/backend.js?v=1'></script>";
+                    $responseHTML .= "<script src='".$this->config->pluginRoot."/js/libs/angular.min.js'></script>";
+                    $responseHTML .= "<script src='".$this->config->pluginRoot."/js/dist/backend.js?v=1'></script>";
                 }
     
                 echo $responseHTML;

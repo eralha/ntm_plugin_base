@@ -1,4 +1,4 @@
-var candidaturas = angular.module('appCandidaturas');
+var candidaturas = angular.module('appCandidaturas', ['appServices']);
 
 
 	candidaturas.directive('dirListaCandidaturas', ['$rootScope', '$injector', '$filter', '$sce', function($rootScope, $injector, $filter, $sce) {

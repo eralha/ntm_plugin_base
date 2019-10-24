@@ -4,17 +4,26 @@ namespace ER\app\controllers;
 
 require_once('/../helpers/ajax.php');
 require_once('/../helpers/emailer.php');
+require_once('/../helpers/pluginConfig.php');
 
 	class candidaturas {
 
         var $AJAX;
+        var $config;
 
 		function __construct(){
+            $this->config = new \ER\app\helpers\pluginConfig();
+
             $this->AJAX = new \ER\app\helpers\ajax();
-            $this->AJAX->configAjaxHoocks($this, array('_getCandidaturas', 'getContacts'));
+            $this->AJAX->configAjaxHoocks($this, array('_getCandidaturas', 'getContacts', 'getCandidaturas'));
         }
         
         public function getContacts(){
+            echo '[]';
+            wp_die();
+        }
+
+        public function getCandidaturas(){
             echo '[]';
             wp_die();
         }

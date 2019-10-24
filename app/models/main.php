@@ -2,24 +2,25 @@
 
 namespace ER\app\models;
 
+require_once('/../helpers/pluginConfig.php');
+
     class main {
-    
-            var $optionsName = "er_fc_";
-            var $dbVersion = "0.3";
     
             //config vars são usadas em varias classes
             public $table_contactos;
             public $table_candidaturas;
     
             function __construct(){
+                $this->config = new \ER\app\helpers\pluginConfig();
+
                 $this->getTables();
             }
     
             function getTables(){
                 global $wpdb;
     
-                $table_contactos = $wpdb->prefix.$this->optionsName."_contactos";
-                $table_candidaturas = $wpdb->prefix.$this->optionsName."_candidaturas";
+                $table_contactos = $wpdb->prefix.$this->config->optionsName."_contactos";
+                $table_candidaturas = $wpdb->prefix.$this->config->optionsName."_candidaturas";
     
                 $this->table_contactos = $table_contactos;
                 $this->table_candidaturas = $table_candidaturas;
@@ -70,7 +71,7 @@ namespace ER\app\models;
                 dbDelta($sqlTblCandidaturas);
     
     
-                add_option($this->optionsName."_db_version", $this->dbVersion);
+                add_option($this->config->optionsName."_db_version", $this->config->dbVersion);
             }
             function removeTable(){
                 global $wpdb;

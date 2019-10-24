@@ -1,6 +1,6 @@
-var services = angular.module('appServices');
+var services = angular.module('appServices', []);
 
-	services.factory('dataService', function($http, $q) {
+	services.factory('dataService', ['$http', '$q', function($http, $q) {
 
 		this.getData = function(postData){
 
@@ -17,4 +17,4 @@ var services = angular.module('appServices');
 
 		return this;
 
-	});
+	}]);

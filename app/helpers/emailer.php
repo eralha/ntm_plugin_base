@@ -2,14 +2,14 @@
 
 namespace ER\app\helpers;
 
-require_once('/../helpers/pluginPaths.php');
+require_once('/../helpers/pluginConfig.php');
 require_once('/../../vendor/cssin-master/src/cssin.php');
 
 	class emailer {
 
 
 		function __construct(){
-            $this->paths = new \ER\app\helpers\pluginPaths();
+            $this->config = new \ER\app\helpers\pluginConfig();
 		}
 
 		function sendEmails($message, $lang, $tipo){

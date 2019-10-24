@@ -4,11 +4,15 @@ namespace ER\app\helpers;
 
 	class ajax {
 
-		var $nonceSalt = "er-plugin-nonce-form-contactos";
-		public $hashSalt = 'n232309m23840cmciçerjodifmv09j';
+		var $nonceSalt;
+		var $hashSalt;
 
 		function __construct(){
 			//colocamos as tabelas em memoria
+
+			$this->config = new \ER\app\helpers\pluginConfig();
+			$this->nonceSalt = $this->config->nonceSalt;
+			$this->hashSalt = $this->config->hashSalt;
 		}
 
 		function configAjaxHoocks($class, $hoocks){
