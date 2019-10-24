@@ -1,0 +1,135 @@
+@import "_normalize.less";
+@import "remixins.less";
+
+@import "_utils.less";
+@import "_grid.less";
+@import "_icons.less";
+@import "_config.less";
+
+
+/* styles */
+body, html{
+  xfont-size: 62.5%;
+  xbackground-color: #fff;
+}
+
+.main { width: 100%; }
+.warper {
+  width: 1200px;
+  font-size: 16px;
+  .m_center;
+}
+@media only screen and (max-width: 1199px){ 
+  .warper { width: 96%; }
+}
+@media only screen and (max-width: @desktop){ 
+  .warper { width: 96%; }
+}
+@media only screen and (max-width: @ipadPortrait){ 
+  .warper { width: 92%; }
+}
+@media only screen and (max-width: @mobile){ 
+  .warper--interior .container_12 > .grid_3,
+  .warper--interior .container_12 > .grid_9 { width: @grid_12 !important; }
+}
+
+.contact__list { 
+  margin-top: 20px; 
+  .controlls {
+    float: right;
+    margin-bottom: 20px;
+    .btn {
+      margin-left: 10px;
+    }
+  }
+  .panel-body {
+    display: none;
+  }
+  .panel {
+    border-bottom: 0;
+    margin-bottom: 10px;
+  }
+  .panel-heading { cursor: pointer; }
+  .panel.open  {
+    margin-bottom: 20px;
+    border-bottom: solid 1px #ddd;
+    .panel-body { display: block; }
+  }
+}
+.l-filtros {
+  width: 100%;
+  clear: both;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .form-control {
+    width: 300px;
+  }
+  .btn-group {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+.delleting {
+  opacity: 0.4;
+}
+
+@import "_editor.less";
+
+/* helpers */
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+.invisible {
+    visibility: hidden;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
