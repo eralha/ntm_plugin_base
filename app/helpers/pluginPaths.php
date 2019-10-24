@@ -12,11 +12,11 @@ namespace ER\app\helpers;
 		function __construct(){
 			//init plugin folder paths
 			$this->uploadDirPath = dirname(__FILE__).'\uploads\\';
-			//precisamos de remover o path da pasta app, porque fica na root do plugin
+			//precisamos de remover o path da pasta app, porque esta folder fica na root do plugin
 			$this->uploadDirPath = str_replace('\app\helpers', '', $this->uploadDirPath);
 
 			$this->pluginDirPath = dirname(__FILE__);
-			//precisamos de remover o path da pasta app, porque fica na root do plugin
+			//precisamos de remover o path da pasta app, porque esta folder fica na root do plugin
 			$this->pluginDirPath = str_replace('app\helpers', '', $this->pluginDirPath);
 
 			$this->pluginRoot = plugins_url('/ntm_plugin_base', '');

@@ -69,15 +69,14 @@ require_once('controllers/candidaturas.php');
     
                     $responseHTML .= "<link rel='stylesheet' href='".$this->paths->pluginRoot."/css/style.css' type='text/css' />";
                     $responseHTML .= "<link rel='stylesheet/less' href='".$this->paths->pluginRoot."/css/less/style.less' type='text/css'>";
-                      $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/libs/less-1.3.3.min.js'></script>";
+                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/libs/less-1.3.3.min.js'></script>";
     
                     $responseHTML .= "<script>window.pluginsDir = '".$this->paths->pluginRoot."';</script>";
                     $responseHTML .= "<script>window.currentUserId = '".$current_user->data->ID."';</script>";
                     $responseHTML .= "<script>window.nonces = ".$this->AJAX->generateNonces().";</script>";
     
                     $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/libs/angular.min.js'></script>";
-                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/src/modules/validators/angular__validators.js?v=1'></script>";
-                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/src/modules/angular/backend.js?v=1'></script>";
+                    $responseHTML .= "<script src='".$this->paths->pluginRoot."/js/dist/backend.js?v=1'></script>";
                 }
     
                 echo $responseHTML;

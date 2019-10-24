@@ -12,8 +12,6 @@ require_once('/../helpers/emailer.php');
 		function __construct(){
             $this->AJAX = new \ER\app\helpers\ajax();
             $this->AJAX->configAjaxHoocks($this, array('_getCandidaturas', 'getContacts'));
-
-            $emailer = new \ER\app\helpers\emailer();
         }
         
         public function getContacts(){
