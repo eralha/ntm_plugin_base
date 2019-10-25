@@ -2,10 +2,10 @@
 
 namespace ER\app;
 
-require_once('helpers/ajax.php');
-require_once('helpers/pluginConfig.php');
-require_once('models/main.php');
-require_once('controllers/candidaturas.php');
+use ER\app\helpers\pluginConfig;
+use ER\app\helpers\ajax;
+use ER\app\models\mainModel;
+use ER\app\controllers\candidaturas;
 
     class main {
     
@@ -19,16 +19,16 @@ require_once('controllers/candidaturas.php');
 
             function init(){
                 //init path helper
-                $this->config = new \ER\app\helpers\pluginConfig();
+                $this->config = new pluginConfig();
 
                 //init ajax helper
-                $this->AJAX = new \ER\app\helpers\ajax();
+                $this->AJAX = new ajax();
 
                 //init database
-                $this->DB = new \ER\app\models\main();
+                $this->DB = new mainModel();
 
                 //ini all controllers
-                $candidaturas = new \ER\app\controllers\candidaturas();
+                $candidaturas = new candidaturas();
             }
     
             function activationHandler(){

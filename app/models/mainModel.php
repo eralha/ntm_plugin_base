@@ -2,16 +2,16 @@
 
 namespace ER\app\models;
 
-require_once('/../helpers/pluginConfig.php');
+use ER\app\helpers\pluginConfig;
 
-    class main {
+    class mainModel {
     
             //config vars são usadas em varias classes
             public $table_contactos;
             public $table_candidaturas;
     
             function __construct(){
-                $this->config = new \ER\app\helpers\pluginConfig();
+                $this->config = new pluginConfig();
 
                 $this->getTables();
             }

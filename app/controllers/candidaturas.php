@@ -2,9 +2,9 @@
 
 namespace ER\app\controllers;
 
-require_once('/../helpers/ajax.php');
-require_once('/../helpers/emailer.php');
-require_once('/../helpers/pluginConfig.php');
+use ER\app\helpers\pluginConfig;
+use ER\app\helpers\ajax;
+use ER\app\helpers\emailer;
 
 	class candidaturas {
 
@@ -12,9 +12,9 @@ require_once('/../helpers/pluginConfig.php');
         var $config;
 
 		function __construct(){
-            $this->config = new \ER\app\helpers\pluginConfig();
+            $this->config = new pluginConfig();
 
-            $this->AJAX = new \ER\app\helpers\ajax();
+            $this->AJAX = new ajax();
             $this->AJAX->configAjaxHoocks($this, array('_getCandidaturas', 'getContacts', 'getCandidaturas'));
         }
         

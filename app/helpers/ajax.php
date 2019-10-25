@@ -2,6 +2,8 @@
 
 namespace ER\app\helpers;
 
+use ER\app\helpers\pluginConfig;
+
 	class ajax {
 
 		var $nonceSalt;
@@ -10,7 +12,7 @@ namespace ER\app\helpers;
 		function __construct(){
 			//colocamos as tabelas em memoria
 
-			$this->config = new \ER\app\helpers\pluginConfig();
+			$this->config = new pluginConfig();
 			$this->nonceSalt = $this->config->nonceSalt;
 			$this->hashSalt = $this->config->hashSalt;
 		}

@@ -11,7 +11,7 @@
 // No direct access to this file
 defined('ABSPATH') or die('Restricted access');
 
-require_once('app/main.php');
+require_once('app/autoloader.php');
 
 $er_base_plugin = new ER\app\main();
 
