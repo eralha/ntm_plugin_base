@@ -22,7 +22,7 @@ use ER\app\controllers\candidaturas;
                 $this->config = new pluginConfig();
 
                 //init ajax helper
-                $this->AJAX = new ajax();
+                $this->AJAX = ajax::getInstance();
 
                 //init database
                 $this->DB = new mainModel();

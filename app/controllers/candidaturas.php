@@ -14,7 +14,8 @@ use ER\app\helpers\emailer;
 		function __construct(){
             $this->config = new pluginConfig();
 
-            $this->AJAX = new ajax();
+			$this->AJAX = ajax::getInstance();;
+			//chamamos esta função para linkar estas funções a pedidos ajax wordpress
             $this->AJAX->configAjaxHoocks($this, array('_getCandidaturas', 'getContacts', 'getCandidaturas'));
         }
         

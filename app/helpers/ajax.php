@@ -6,8 +6,17 @@ use ER\app\helpers\pluginConfig;
 
 	class ajax {
 
+		/*
+			this class is a singleton implementation
+			use the getInstance method to implement the object
+			this way we can store the nonces registered in $noncesArray
+			for latter generate the nonces in the frontend.
+		*/
+
 		var $nonceSalt;
 		var $hashSalt;
+		var $noncesArray = array();
+		private static $instance = null;
 
 		function __construct(){
 			//colocamos as tabelas em memoria
@@ -17,13 +26,21 @@ use ER\app\helpers\pluginConfig;
 			$this->hashSalt = $this->config->hashSalt;
 		}
 
+		public static function getInstance(){
+		  if(!self::$instance){
+			self::$instance = new ajax();
+		  }
+		 
+		  return self::$instance;
+		}
+
 		function configAjaxHoocks($class, $hoocks){
 			//se não existir a variavel global para guardar as nonces criamos
-			if(!$GLOBALS[$this->nonceSalt]){ $GLOBALS[$this->nonceSalt] = array(); }
+			if(!$this->noncesArray[$this->nonceSalt]){ $this->noncesArray[$this->nonceSalt] = array(); }
 
 			foreach ($hoocks as $key => $value){
 				//metemos esta funcção num array para depois gerar as nonces
-				array_push($GLOBALS[$this->nonceSalt], $value);
+				array_push($this->noncesArray[$this->nonceSalt], $value);
 				add_action('wp_ajax_'.$value, array($class, $value) );
 				add_action('wp_ajax_nopriv_'.$value, array($class, $value) );
 			}
@@ -31,10 +48,8 @@ use ER\app\helpers\pluginConfig;
 
 		function generateNonces(){
 			$salt = $this->nonceSalt;
-			$hoocks = $GLOBALS[$this->nonceSalt];
+			$hoocks = $this->noncesArray[$this->nonceSalt];
 			$nonces = array();
-
-			
 
 			if(is_user_logged_in()){
 				global $current_user;
