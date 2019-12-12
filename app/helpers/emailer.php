@@ -52,10 +52,10 @@ use ER\app\helpers\pluginConfig;
         function getTemplate($path, $data, $tipo){
 			ob_start();
 
-			include $this->pluginDirPath . '\templates\backend\email_meta.php';
-			include $this->pluginDirPath . '\templates\backend\email_topo_'.$tipo.'.php';
-			include $this->pluginDirPath . '\templates\backend\\' . $path;
-			include $this->pluginDirPath . '\templates\backend\email_bottom.php';
+			include $this->pluginDirPath . '\emails\email_meta.php';
+			include $this->pluginDirPath . '\emails\email_topo_'.$tipo.'.php';
+			include $this->pluginDirPath . '\emails\\' . $path;
+			include $this->pluginDirPath . '\emails\email_bottom.php';
 
 			$html = ob_get_clean();
 
