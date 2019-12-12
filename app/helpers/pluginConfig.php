@@ -9,6 +9,7 @@ namespace ER\app\helpers;
 		public $dbVersion = "0.3";
 		public $nonceSalt = "er-plugin-nonce-form-contactos";
 		public $hashSalt = 'n232309m23840cmciçerjodifmv09j';
+		public $captachKey = 'KEYCAPTCHA';
 		public $uploadDirPath;
 		public $pluginDirPath;
 		public $pluginRoot;

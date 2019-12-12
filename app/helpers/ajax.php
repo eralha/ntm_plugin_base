@@ -23,6 +23,7 @@ use ER\app\helpers\pluginConfig;
 
 			$this->config = new pluginConfig();
 			$this->nonceSalt = $this->config->nonceSalt;
+			$this->captachKey = $this->config->captachKey;
 			$this->hashSalt = $this->config->hashSalt;
 		}
 
@@ -86,7 +87,7 @@ use ER\app\helpers\pluginConfig;
 		public function validateGCaptcha() {
 			$post_data = http_build_query(
 				array(
-					'secret' => '6Leom4YUAAAAAHKnvHZy49lNqlwLS5QE8__xgViO',
+					'secret' => $this->captachKey,
 					'response' => $_POST['greCaptcha'],
 					'remoteip' => $_SERVER['REMOTE_ADDR']
 				)
