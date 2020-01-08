@@ -17,7 +17,6 @@ use ER\app\helpers\pluginConfig;
 					$email = $this->getTemplate('email_cortesia_'.$tipo.'_pt.php', $message, $tipo);
 
 					if($tipo == 'contacto'){ $subject = 'Recebemos o seu contacto'; }
-					if($tipo == 'candidatura'){ $subject = 'Recebemos a sua candidatura'; }
 
 					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
 					wp_mail($message->vchEmail, $subject, $email, $headers);
@@ -26,7 +25,6 @@ use ER\app\helpers\pluginConfig;
 					$email = $this->getTemplate('email_cortesia_'.$tipo.'_en.php', $message, $tipo);
 
 					if($tipo == 'contacto'){ $subject = 'We received your contact'; }
-					if($tipo == 'candidatura'){ $subject = 'We received your aplication'; }
 
 					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
 					wp_mail($message->vchEmail, $subject, $email, $headers);
@@ -40,11 +38,6 @@ use ER\app\helpers\pluginConfig;
 					$subject = 'Contacto Cliente';
 					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
 					wp_mail($this->emailGestao, $subject, $email, $headers);
-				}
-				if($tipo == 'candidatura'){ 
-					$subject = 'Candidatura recebida';
-					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
-					wp_mail($this->emailGestao, $subject, $email, $headers, array($message->vchFicheiroAttachment));
 				}
 			/* END EMAIL GESTÃO */
         }

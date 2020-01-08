@@ -40,7 +40,6 @@ if (!function_exists("er_base_plugin_init")) {
 		if ( function_exists('add_submenu_page') ){
 			//ADDS A LINK TO TO A SPECIFIC ADMIN PAGE
 			add_menu_page('Contactos', 'Contactos', 'publish_posts', 'cl-contactos', array($er_base_plugin, 'printListContactos'), 'dashicons-nametag', 50);
-			add_menu_page('Candidaturas', 'Candidaturas', 'publish_posts', 'cl-candidaturas', array($er_base_plugin, 'printListCandidaturas'), 'dashicons-nametag', 51);
 		}
 	}
 }

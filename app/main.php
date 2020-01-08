@@ -5,7 +5,7 @@ namespace ER\app;
 use ER\app\helpers\pluginConfig;
 use ER\app\helpers\ajax;
 use ER\app\models\mainModel;
-use ER\app\controllers\candidaturas;
+use ER\app\controllers\contactos;
 
     class main {
     
@@ -29,7 +29,7 @@ use ER\app\controllers\candidaturas;
                 $this->DB = new mainModel();
 
                 //ini all controllers
-                $candidaturas = new candidaturas();
+                $contactos = new contactos();
             }
     
             function activationHandler(){
@@ -79,9 +79,6 @@ use ER\app\controllers\candidaturas;
     
             function printListContactos(){
                 $this->printPageDirective('dir-Lista-Contactos');
-            }
-            function printListCandidaturas(){
-                $this->printPageDirective('dir-Lista-Candidaturas');
             }
     
             function addHeaderContent($atts){
