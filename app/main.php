@@ -15,6 +15,7 @@ use ER\app\controllers\candidaturas;
 
             function __construct(){
                 //do nothing
+                $this->init();
             }
 
             function init(){
