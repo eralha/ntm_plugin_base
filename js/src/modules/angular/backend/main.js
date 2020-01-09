@@ -1,4 +1,4 @@
-var app = angular.module('app', ['appServices', 'appDirectives', 'appContactos']);
+var app = angular.module('app', ['appServices', 'appDirectives', 'appContactos', 'appSettings']);
 
 	app.filter('startFrom', function() {
 		return function(input, start) {

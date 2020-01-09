@@ -12,6 +12,10 @@
     "grunt-contrib-less": "^0.11.4",
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "^0.6.0",
+    "grunt-inline-css": "*",
+    "grunt-inline": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-include-replace": "*",
     "md5": "*"
   },
   "engines": {

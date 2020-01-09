@@ -6,6 +6,7 @@ use ER\app\helpers\pluginConfig;
 use ER\app\helpers\ajax;
 use ER\app\models\mainModel;
 use ER\app\controllers\contactos;
+use ER\app\controllers\settings;
 
     class main {
     
@@ -30,6 +31,7 @@ use ER\app\controllers\contactos;
 
                 //ini all controllers
                 $contactos = new contactos();
+                $settings = new settings();
             }
     
             function activationHandler(){
@@ -79,6 +81,10 @@ use ER\app\controllers\contactos;
     
             function printListContactos(){
                 $this->printPageDirective('dir-Lista-Contactos');
+            }
+
+            function printListSettings(){
+                $this->printPageDirective('dir-Lista-Settings');
             }
     
             function addHeaderContent($atts){

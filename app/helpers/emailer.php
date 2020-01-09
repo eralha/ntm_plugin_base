@@ -3,41 +3,51 @@
 namespace ER\app\helpers;
 
 use ER\app\helpers\pluginConfig;
+use ER\app\models\mainModel;
 
 	class emailer {
 
+		var $config;
 
 		function __construct(){
-            $this->config = new pluginConfig();
+			$this->config = new pluginConfig();
 		}
 
 		function sendEmails($message, $lang, $tipo){
+			//init db here
+			$this->DB = new mainModel();
+			$settings = $this->DB->getSavedSettings();
+
+			$emailFromName = $settings[0]->vchFromName;
+			$emailFromEmail = $settings[0]->vchFromEmail;
+			$emailGestao = $settings[0]->vchEmailGestao;
+
 			/* EMAIL CORTESIA */
 				if($lang == 'pt_PT' || $lang == 'pt_BR'){
-					$email = $this->getTemplate('email_cortesia_'.$tipo.'_pt.php', $message, $tipo);
+					$email = $this->getTemplate('email_cortesia_'.$tipo.'_pt.html', $message, $tipo);
 
 					if($tipo == 'contacto'){ $subject = 'Recebemos o seu contacto'; }
 
-					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
+					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$emailFromName.' <'.$emailFromEmail.'>');
 					wp_mail($message->vchEmail, $subject, $email, $headers);
 				}
 				if($lang == 'en_GB'){
-					$email = $this->getTemplate('email_cortesia_'.$tipo.'_en.php', $message, $tipo);
+					$email = $this->getTemplate('email_cortesia_'.$tipo.'_en.html', $message, $tipo);
 
 					if($tipo == 'contacto'){ $subject = 'We received your contact'; }
 
-					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
+					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$emailFromName.' <'.$emailFromEmail.'>');
 					wp_mail($message->vchEmail, $subject, $email, $headers);
 				}
 			/* END EMAIL CORTESIA */
 
 			/* EMAIL GESTÃO */
-				$email = $this->getTemplate('email_dados_'.$tipo.'.php', $message, $tipo);
+				$email = $this->getTemplate('email_dados_'.$tipo.'.html', $message, $tipo);
 
 				if($tipo == 'contacto'){ 
 					$subject = 'Contacto Cliente';
-					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$this->fromName.' <'.$this->fromEmail.'>');
-					wp_mail($this->emailGestao, $subject, $email, $headers);
+					$headers = array('Content-Type: text/html; charset=UTF-8;', 'From: '.$emailFromName.' <'.$emailFromEmail.'>');
+					wp_mail($emailGestao, $subject, $email, $headers);
 				}
 			/* END EMAIL GESTÃO */
         }
@@ -45,17 +55,11 @@ use ER\app\helpers\pluginConfig;
         function getTemplate($path, $data, $tipo){
 			ob_start();
 
-			include $this->pluginDirPath . '\emails\email_meta.php';
-			include $this->pluginDirPath . '\emails\email_topo_'.$tipo.'.php';
-			include $this->pluginDirPath . '\emails\\' . $path;
-			include $this->pluginDirPath . '\emails\email_bottom.php';
+			include $this->config->pluginDirPath . '\emails\\dist\\' . $path;
 
 			$html = ob_get_clean();
 
-			$cssin = new FM\CSSIN();
-			$html_with_inlined_css = $cssin->inlineCSS('mail.html', $html);
-
-			return $html_with_inlined_css;
+			return $html;
 		}
 
 	}

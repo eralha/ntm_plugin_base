@@ -3,6 +3,7 @@
 namespace ER\app\helpers;
 
 use ER\app\helpers\pluginConfig;
+use ER\app\models\mainModel;
 
 	class ajax {
 
@@ -20,7 +21,6 @@ use ER\app\helpers\pluginConfig;
 
 		function __construct(){
 			//colocamos as tabelas em memoria
-
 			$this->config = new pluginConfig();
 			$this->nonceSalt = $this->config->nonceSalt;
 			$this->captachKey = $this->config->captachKey;
@@ -85,9 +85,15 @@ use ER\app\helpers\pluginConfig;
 		}
 
 		public function validateGCaptcha() {
+			//init db here
+			$this->DB = new mainModel();
+			$settings = $this->DB->getSavedSettings();
+
+			$vchCaptchaSecret = $settings[0]->vchCaptchaSecret;
+
 			$post_data = http_build_query(
 				array(
-					'secret' => $this->captachKey,
+					'secret' => $vchCaptchaSecret,
 					'response' => $_POST['greCaptcha'],
 					'remoteip' => $_SERVER['REMOTE_ADDR']
 				)

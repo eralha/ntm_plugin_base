@@ -14,7 +14,7 @@
 
 		<div class="panel panel-default" dir-Open-Panel ng-class="{'delleting' : contact.delleting}" ng-repeat="contact in contacts" style="width:90%;">
 		  <div class="panel-heading">
-		    <h2 class="panel-title">{{contact.vchNome}} - {{contact.vchEmpresa}}
+		    <h2 class="panel-title">{{contact.vchNome}}
 		    	<div style="float:right;">{{getDate(contact.iData)}}</div>
 		    </h2>
 		  </div>

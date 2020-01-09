@@ -9,7 +9,7 @@ namespace ER\app\helpers;
 		public $dbVersion = "0.3";
 		public $nonceSalt = "ntm-plugin-nonce-form-contactos";
 		public $hashSalt = '9888d8f7g897dfg564dg56f4dg98dfhdfg564';
-		public $captachKey = 'KEYCAPTCHA';
+		public $captachKey = '';
 		public $uploadDirPath;
 		public $pluginDirPath;
 		public $pluginRoot;

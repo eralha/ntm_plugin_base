@@ -10,7 +10,8 @@ use ER\app\models\mainModel;
 	class contactos {
 
         var $AJAX;
-        var $config;
+		var $config;
+		var $emailSender;
 
 		function __construct(){
             $this->config = new pluginConfig();
@@ -75,8 +76,8 @@ use ER\app\models\mainModel;
 		}
 
 		function saveContact(){
-			if($this->validateGCaptcha() == 0){
-				wp_die(0);
+			if($this->AJAX->validateGCaptcha() == 0){
+				//wp_die(0);
 			}
 
 			$this->AJAX->verifyNonce('saveContact');
@@ -123,8 +124,6 @@ use ER\app\models\mainModel;
 		}
 
 		function _saveContact(){
-			$this->AJAX->verifyNonce('saveContact');
-
 			//$data = $_POST["data"];
 
 			//se existir um ficheiro tentamos mover para a pasta de ficheiros
@@ -148,12 +147,8 @@ use ER\app\models\mainModel;
 
 			//se inserio na base de dados envia os emails
 			if($results != 0){
-				$this->emailer = new er_comp_email();
-
-				//esta var tem de ficar aqui porque dá erro ao tentar ser inserida na BD
-				$msg->assuntoPedido = sanitize_text_field($message['assuntoPedido']);
-
-				$this->emailer->sendEmails($msg, sanitize_text_field($message['lang']), 'contacto');
+				$this->emailSender = new emailer();
+				$this->emailSender->sendEmails($msg, sanitize_text_field($message['lang']), 'contacto');
 			}
 
 			echo $wpdb->insert_id;

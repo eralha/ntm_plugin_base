@@ -15,6 +15,7 @@ require_once('app/autoloader.php');
 
 $er_base_plugin = new ER\app\main();
 
+
 //Actions and Filters
 if (isset($er_base_plugin)) {
 	//Actions
@@ -40,6 +41,7 @@ if (!function_exists("er_base_plugin_init")) {
 		if ( function_exists('add_submenu_page') ){
 			//ADDS A LINK TO TO A SPECIFIC ADMIN PAGE
 			add_menu_page('Contactos', 'Contactos', 'publish_posts', 'cl-contactos', array($er_base_plugin, 'printListContactos'), 'dashicons-nametag', 50);
+				add_submenu_page( 'cl-contactos', 'Contactos - Settings', 'Settings', 'publish_posts', 'cl-contactos-settings', array($er_base_plugin, 'printListSettings'));
 		}
 	}
 }
