@@ -8,7 +8,7 @@ namespace ER\app\helpers;
 		public $optionsName = "ntm_fc_";
 		public $dbVersion = "0.3";
 		public $nonceSalt = "ntm-plugin-nonce-form-contactos";
-		public $hashSalt = '9888d8f7g897dfg564dg56f4dg98dfhdfg564';
+		public $hashSalt = 'bbacbbc7154c39abc3407c7738dbe3189bdbfa3c6c5922d490c66d3bb6ab239e';
 		public $captachKey = '';
 		public $uploadDirPath;
 		public $pluginDirPath;
